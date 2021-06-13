@@ -1,4 +1,4 @@
-package by.yauheni.entity.user;
+package by.yauheni.entity;
 
 public enum Status {
     ACTIVE, INACTIVE

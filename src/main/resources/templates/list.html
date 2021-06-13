@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<style>
+    .users{
+        position: absolute;
+        top: 15%;
+        left: 50%;
+        margin: -150px 0 0 -150px;
+    }
+</style>
+
+<div class="users">
+    <h1>Users</h1>
+    <form th:action="@{/logout}" method="post">
+        <ul>
+            <li style="list-style: none" th:each="item:${users}">
+                <div class="row">
+                    <a th:href="@{/user/(id=${item.getId()})}" style="width: 50px" th:text="${item.getUsername()}"></a>
+                </div>
+            </li>
+        </ul>
+        <br>
+        <br>
+        <button type="submit">Log out</button>
+    </form>
+    <form th:action="@{/user/new}" th:if="${admin==1}" method="get">
+        <button>Create user</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New</title>
+</head>
+<body>
+<style>
+    .login {
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        margin: -150px 0 0 -150px;
+    }
+    .alert {
+        color: red;
+    }
+</style>
+
+<div class="login">
+    <h1>Create new User</h1>
+        <form th:action="@{/user/new}" th:object="${newUser}" method="post">
+            <input type="text" th:field="*{username}" placeholder="Username"/>
+            <div class="alert" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+            <div style="color: red" th:if="${error==1}">Username already exist</div>
+            <br>
+            <br>
+            <input type="password" th:field="*{password}" placeholder="Password"/>
+            <div class="alert" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+            <br>
+            <br>
+            <input type="text" th:field="*{firstName}" placeholder="First name"/>
+            <div class="alert" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
+            <br>
+            <br>
+            <input type="text" th:field="*{lastName}" placeholder="Last name"/>
+            <div class="alert" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
+            <br>
+            <br>
+            <label>Role
+                <select name="role">
+                    <option selected th:value="${roles.get(0)}"
+                            >User</option>
+                    <option th:value="${roles.get(1)}"
+                            >Admin</option>
+                </select>
+            </label>
+            <br>
+            <br>
+            <label>Status
+                <select name="state">
+                    <option selected th:value="${statuses.get(0)}"
+                    >Active</option>
+                    <option th:value="${statuses.get(1)}"
+                    >Inactive</option>
+                </select>
+            </label>
+            <br>
+            <br>
+            <button type="submit">Add</button>
+        </form>
+        <br>
+        <form action="/user" method="get">
+            <button type="submit">Back</button>
+        </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View</title>
+</head>
+<body>
+<style>
+    .user{
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        margin: -150px 0 0 -150px;
+    }
+</style>
+
+<div class="user">
+    <h1>User</h1>
+    <form th:action="@{/user}"  th:object="${viewUser}" method="get">
+        <label>Username:</label>
+        <label th:text="*{username}"></label>
+        <br>
+        <br>
+        <label>First name:</label>
+        <label th:text="*{firstName}"></label>
+        <br>
+        <br>
+        <label>Last name:</label>
+        <label th:text="*{lastName}"></label>
+        <br>
+        <br>
+        <label>Role:</label>
+        <label th:text="*{roles}"></label>
+        <br>
+        <br>
+        <label>Status:</label>
+        <label th:text="*{state}"></label>
+        <br>
+        <br>
+        <label>Date:</label>
+        <label th:text="*{createdAt}"></label>
+        <br>
+        <br>
+        <button type="submit">Back</button>
+    </form>
+    <form th:action="@{/user/edit}" th:if="${admin==1}" method="get">
+        <input hidden name="id" th:value="${viewUser.getId()}">
+        <button>Edit</button>
+    </form>
+</div>
+</body>
+</html>
