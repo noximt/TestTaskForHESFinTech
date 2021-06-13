@@ -72,7 +72,6 @@ public class UserAccountController {
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("edit");
         }else{
-            userAccountService.update(newUserDTO);
             modelAndView.setViewName("redirect:/user");
         }
         return modelAndView;

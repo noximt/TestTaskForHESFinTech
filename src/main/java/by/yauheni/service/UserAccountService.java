@@ -27,10 +27,6 @@ public class UserAccountService implements UserDetailsService {
         this.encoder = encoder;
     }
 
-    public void update(NewUserDTO newUserDTO){
-
-    }
-
     public void save(NewUserDTO newUserDTO) {
         UserAccount userAccount = new UserAccount();
         userAccount.setUsername(newUserDTO.getUsername());
